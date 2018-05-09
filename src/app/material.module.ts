@@ -13,7 +13,10 @@ import {
     MatTabsModule,
     MatCardModule,
     MatSelectModule,
-    MatProgressSpinnerModule
+    MatSortModule,
+    MatProgressSpinnerModule,
+    MatTableModule,
+    MatPaginatorModule
 } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -30,9 +33,12 @@ import { MatInputModule } from '@angular/material/input';
         MatInputModule,
         MatListModule,
         MatNativeDateModule,
+        MatPaginatorModule,
         MatProgressSpinnerModule,
         MatSelectModule,
+        MatSortModule,
         MatSidenavModule,
+        MatTableModule,
         MatTabsModule,
         MatToolbarModule
     ],
@@ -47,9 +53,12 @@ import { MatInputModule } from '@angular/material/input';
         MatInputModule,
         MatListModule,
         MatNativeDateModule,
+        MatPaginatorModule,
         MatProgressSpinnerModule,
         MatSelectModule,
         MatSidenavModule,
+        MatSortModule,
+        MatTableModule,
         MatTabsModule,
         MatToolbarModule
     ]

@@ -1,7 +1,8 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
 import { StopWorkoutComponent } from './stop-workout.component';
+import { WorkoutService } from '../workout.service';
 
 @Component({
   selector: 'app-current-workout',
@@ -9,23 +10,24 @@ import { StopWorkoutComponent } from './stop-workout.component';
   styleUrls: ['./current-workout.component.css']
 })
 export class CurrentWorkoutComponent implements OnInit {
-  @Output() exerciseExit = new EventEmitter<void>();
   progress = 0;
   timer: any;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private workoutService: WorkoutService) { }
 
   ngOnInit() {
     this.startOrResumeTimer();
   }
 
   startOrResumeTimer() {
+    const step = this.workoutService.getActiveExercise().duration / 100 * 1000;
     this.timer = setInterval(() => {
-      this.progress += 5;
+      this.progress += 1;
       if (this.progress >= 100) {
+        this.workoutService.completeExercise();
         clearInterval(this.timer);
       }
-    }, 1000);
+    }, step);
   }
 
   onStop() {
@@ -38,7 +40,7 @@ export class CurrentWorkoutComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.exerciseExit.emit();
+        this.workoutService.cancelExercise(this.progress);
       } else {
         this.startOrResumeTimer();
       }

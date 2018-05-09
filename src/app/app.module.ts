@@ -22,6 +22,7 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { StopWorkoutComponent } from './workout/current-workout/stop-workout.component';
 import { AuthService } from './auth/auth.service';
+import { WorkoutService } from './workout/workout.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { AuthService } from './auth/auth.service';
     FormsModule,
     MaterialModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, WorkoutService],
   bootstrap: [AppComponent],
   entryComponents: [StopWorkoutComponent]
 })
